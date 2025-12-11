@@ -1,0 +1,21 @@
+﻿@model WebApplication1.Models.Customer
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+    <label>Name:</label>
+    <input asp-for="Name" /><br />
+    <label>Email:</label>
+    <input asp-for="Email" /><br />
+    <label>Password:</label>
+    <input asp-for="Password" type="password" /><br />
+    <label>Phone:</label>
+    <input asp-for="Phone" /><br />
+    <label>Address:</label>
+    <input asp-for="Address" /><br />
+    <label>Gender:</label>
+    <input asp-for="Gender" /><br />
+    <label>Payment Method:</label>
+    <input asp-for="PaymentMethod" /><br />
+    <button type="submit">Register</button>
+</form>
