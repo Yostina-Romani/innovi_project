@@ -1,0 +1,9 @@
+﻿@model WebApplication1.Models.Product
+
+<h2>@Model.ProductName</h2>
+<p>Price: @Model.Price.ToString("0.#") $</p>
+
+<p>Stock: @Model.Stock</p>
+<p>Material: @Model.Material</p>
+
+<a asp-action="Index">Back to List</a>

@@ -11,5 +11,7 @@ namespace WebApplication1.Models
         public string Address { get; set; } = null!;
         public string Gender { get; set; } = null!;
         public string PaymentMethod { get; set; } = null!;
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
+
     }
 }
