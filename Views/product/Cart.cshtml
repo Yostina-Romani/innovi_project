@@ -9,6 +9,7 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Total</th>
+            <th>Action</th> <!-- 👈 جديد -->
         </tr>
     </thead>
     <tbody>
@@ -17,13 +18,19 @@
             <tr>
                 <td>@item.Product?.ProductName</td>
                 <td>@item.Quantity</td>
-                <td>@string.Format("{0:C}", item.Product?.Price ?? 0)</td>
-                <td>@string.Format("{0:C}", item.Quantity * (item.Product?.Price ?? 0))</td>
+                <td>@item.Product?.Price</td>
+                <td>@(item.Quantity * (item.Product?.Price ?? 0))</td>
+                <td>
+                    <a asp-controller="Cart"
+                       asp-action="Remove"
+                       asp-route-id="@item.Id"
+                       asp-route-customerId="@item.CustomerId"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                </td>
             </tr>
         }
     </tbody>
 </table>
-
-<p>
-    Total: @string.Format("{0:C}", Model.Where(i => i.Product != null).Sum(i => i.Quantity * i.Product!.Price))
-</p>

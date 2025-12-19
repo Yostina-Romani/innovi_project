@@ -1,0 +1,53 @@
+﻿@model List<WebApplication1.Models.CartItem>
+
+<h2>My Cart</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Product?.ProductName</td>
+                <td>@item.Quantity</td>
+                <td>@item.Product?.Price.ToString("C")</td>
+                <td>@(item.Quantity * (item.Product?.Price ?? 0)).ToString("C")</td>
+                <td>
+                    <a asp-action="Remove"
+                       asp-route-id="@item.Id"
+                       asp-route-customerId="@item.CustomerId"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Total للسلة كلها -->
+<p>
+    <strong>Total: </strong>
+    @string.Format("{0:C}", Model.Sum(i => i.Quantity * (i.Product?.Price ?? 0)))
+</p>
+
+<!-- زرار Continue Shopping -->
+<a asp-controller="Product" asp-action="Index" class="btn btn-primary">
+    Continue Shopping
+</a>
+
+<!-- زر Checkout -->
+<form asp-controller="Cart" asp-action="Checkout" method="post" style="display:inline-block; margin-left:10px;">
+    <input type="hidden" name="customerId" value="@Model.FirstOrDefault()?.CustomerId" />
+    <button type="submit" class="btn btn-success">
+        Checkout
+    </button>
+</form>

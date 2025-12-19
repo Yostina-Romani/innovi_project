@@ -9,8 +9,8 @@ namespace WebApplication1.Models
         public string Brand { get; set; } = null!;
         public string Size { get; set; } = null!;
         public string Color { get; set; } = null!;
-        public string ImageURL { get; set; } = null!;
-       
+        public string ImageURL { get; set; } = "/images/products/placeholder.jpg";
+
         [Column(TypeName = "decimal(7,2)")]
         public decimal Price { get; set; }
         public int Stock { get; set; }

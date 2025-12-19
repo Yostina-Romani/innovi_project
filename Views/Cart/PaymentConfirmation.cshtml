@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Payment Confirmation";
+}
+
+<h2>Payment Successful!</h2>
+<p>Thank you for your purchase, Customer ID: @ViewBag.CustomerId</p>
+
+<a asp-controller="Product" asp-action="Index" class="btn btn-primary">
+    Continue Shopping
+</a>
